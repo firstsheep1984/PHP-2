@@ -1,0 +1,28 @@
+DAY 02 NOTES
+
+(optional) Full-text search in MySQL:
+https://www.w3resource.com/mysql/mysql-full-text-search-functions.php
+
+Most form use not get, but post submission.
+GET -> POST
+- get is only used for searches that you want to bookmark
+- everything else is post
+
+HTTP protocol requests and responses:
+https://www.tutorialspoint.com/http/http_requests.htm
+https://www.tutorialspoint.com/http/http_responses.htm
+
+
+CSS
+
+checking username already in use
+
+login
+
+Session
+
+Blog - PDF mocks
+
+Article add (homework)
+
+Articles view - index (homework)

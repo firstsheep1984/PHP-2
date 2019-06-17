@@ -1,0 +1,73 @@
+DAY 03 TASKS
+############
+
+TASK 1
+======
+
+In project 'hello' create 2 files:
+- randomclient.html
+- ajaxgetrandom.php
+
+
+Implement ajaxgetrandom.php to expect 2 parameters in the URL
+similar to: ajaxgetrandom.php?min=3&max=10
+
+As a result ajaxgetrandom.php will display one integer number from the provided range or an error message.
+
+Min/max validation is no server side only.
+
+
+Implement JS/jQuery client randomclient.html as follows:
+
+Min: [ ______________ ]
+Max: [ ______________ ]
+
+[[ Get AJAX Random Number ]]
+
+Random number was: __
+
+
+NOTE: There is no form in this task and no submit button.
+
+
+TASK 2
+======
+
+Create a new PHP project in Netbeans named 'people17'.
+Make sure to put it into c:\xampp\htdocs\ipd17\people17 directory
+
+Create the following files in this project:
+- db.php
+- addperson.php
+- list.php
+- styles.css
+
+Create user and database using PhpMyAdmin named 'people17'.
+Edit db.php contents so that it starts session and connects to database as we've done before. Save generated password for 'people17' user to that file.
+
+In database 'people17' create table 'people' with the following columns:
+- id INT PK AI
+- name VC(50)
+- gpa FLOAT(3,2)
+- isGraduate ENUM('true','false')
+- gender ENUM('male','female','other')
+
+Implement addperson.php to handle 3-state HTML form using POST with the following fields:
+
+Name [___________]          (1-50 characters)
+GPA  [___________]          (0 to 4.3)
+Is graduate [x]             (checkbox)
+Gender: (*) Male, ( )Female, ( ) Other
+[[ Add person ]]
+
+Make sure you verify the submitted values:
+- name must be 1-50 characters long
+- GPA must be 0 to 4.3
+In case of an error display the error messages and redisplay the form, keep the valid values as they were entered by the user, including checkboxes and radio buttons selection.
+
+Add appropriate styles.css and use them to center the page contents as we've done before.
+
+Implement list.php to display a list of all records from 'people' table in the form of an HTML table. Also center the page's contents using CSS.
+
+
+

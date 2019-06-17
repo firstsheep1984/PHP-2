@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Random number generator using AJAX</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#generate').click(function() {
+                    var min = $('input[name=min]').val();
+                    var max = $('input[name=max]').val();
+                    $('#result').load("ajaxgetrandom.php?min=" + min + "&max=" + max);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        Min: <input type="number" name="min"><br>
+        Max: <input type="number" name="max"><br>
+        <button id="generate">Get AJAX random number</button>
+        <p>Random number was: <span id="result"></span></p>
+    </body>
+</html>

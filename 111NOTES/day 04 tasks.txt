@@ -1,0 +1,27 @@
+DAY 04 TASKS
+============
+
+TASK 1
+------
+
+Create script 'articleedit.php' that receives one GET parameter:
+'id' of the article to be edited.
+
+Script may only be used by an authenticated user.
+If user is not logged in display error message with link back to index.php.
+
+Using this script it will be possible to modify an article created by another user.
+
+In this script you will load an existing article with the 'id' provided.
+If article does not exist you will display a 404 page with link back to 'index.php'.
+
+Data of existing article (title and body) will be loaded into input and textarea for editing by user.
+Also activate TinyMCE for textarea like we did before.
+
+On submission via POST you will verify the same requirements and perform the same html clean we did in articleadd.php. In this case we make an exception and allow for substantial code duplication.
+
+Form should keep all fields in the event of failed submission.
+
+On successful submission article should be modified and link back 'index.php' provided to the user.
+
+

@@ -1,0 +1,26 @@
+DAY 01 HOMEWORK
+===============
+
+1. If you haven't finished watching the videos from yesterday - finish watching them.
+
+2. Setup XAMPP and Netbeans 8.2 on your home computer. Clone your Git repository into C:\xampp\htdocs\ipd17 .
+
+3. Create new project blog17 in Netbeans. Make sure to put it into git's working copy C:\xampp\htdocs\ipd17\blog17
+
+4. In blog17 project create file: register.php.
+They will both be implementing 3-state form just like the one we did today.
+
+Register form fields:
+- username 6-20 characters, only uppercase/lowercase, digits, underscore allowed - hint: use regular expressions
+- email - valid looking email - hint: google email validation in PHP
+- pass1
+- pass2 - must identical to pass1, at least 6 characters long, at least one uppercase, one lowercase, one digit in it.
+
+On submission verify the above requirements and display error messages if needed.
+
+On successful submission simply display "account created" message.
+
+5. Add the necessary CSS to your project to center the registration form and display error messages highlighted.
+
+
+

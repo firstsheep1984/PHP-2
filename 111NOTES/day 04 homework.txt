@@ -1,0 +1,157 @@
+DAY 04 HOMEWORK
+###############
+
+TASK 1
+======
+
+Create a new PHP project in Netbeans in c:\xampp\htdocs\ipd17 named 'parking17'. Add the following files to the project
+
+- owneradd.php
+- caradd.php
+- list.php
+- db.php - used to connect to database
+- styles.css - used to center and manage look&feel of all other pages
+
+Using PhpMyAdmin create user and database named 'parking17'.
+
+Add the following tables, all columns non-NULL unless otherwise specified:
+
+owners
+- id INT PK AI
+- name VC(50)
+
+cars
+- id INT PK AI
+- ownerId INT foreign key to owners.id
+- makeModel VC(50)
+- plates VC(10)
+- engineSizeL FLOAT(4,2) NULL allowed
+- fuelType ENUM('gasoline','diesel','hybrid','electric','other')
+
+
+index.php
+---------
+
+Is a static HTML page (no actual PHP need to be used inside) that contains 3 a-href links to caradd.php, owneradd.php, and list.php.
+
+
+owneradd.php
+------------
+
+Display a 3-state form. On submission verify:
+- name is 1-50 characters long
+
+On failed submission display errors and re-display the form.
+
+On successful submission display confirmation message and a link back to index.php.
+
+
+caradd.php
+----------
+
+Display a 3-state form with the following fields and their types:
+
+- ownerId - combo box / drop down with list of existing owner.id record values; you need a separate SELECT to fetch those and populate the combo box
+- makeModel - input type text
+- plates - input type text
+- engineSizeL - input type number with step 0.01
+- fuelType - 5 radio buttons, with gasoline pre-selected initially
+
+
+On submission verify the following:
+- make sure ownerId was selected (is not empty)
+- makeModel is 1-50 characters long
+- plates are 1-10 characters long, only composed of letters (uppercase or lowercase) and digits (use regexp here), BUT before inserting this value into the database you will convert all lowercase letters to uppercase
+- engine size is a numerical value between 0-99.99 or string is empty in which case you will insert NULL value for this field into the database
+
+On failed submission re-display the form and initialize it with all the values previously selected by the user except for those that were invalid.
+
+On successful submission display success message and link to 'index.php'.
+
+
+list.php
+--------
+
+The purpose of this script is to fetch and display information about all cars and their owners. You will use a simple HTML table to display the following columns of information:
+- make and model
+- plates
+- engine size (L)
+- fuel type
+- owner's name
+
+
+ADVANCED:
+
+Add to list.php display to every row another column with link to edit that car's entry. It will link to caredit.php script which will take car's id as its only parameter, e.g. caredit.php?id=72
+Implement functionality of caredit.php to allow for changing all of car's entries (except for its id) with the same verification as described previously.
+
+
+ALTERNATIVE ADVANCED:
+
+Instead of creating caredit.php rename caradd.php to caraddedit.php.
+If this script is accessed without 'id' provided in the URL then assume you're adding a car.
+If this cript is access with an 'id' provided, e.g. caraddedit.php?id=76 then assume you're editing values of car with that id.
+
+
+TASK 2
+======
+
+Create a new Netbeans project named 'families17'.
+
+This website will manage families composed of one family head and many family members.
+
+Using PhpMyAdmin create new user and database named 'families17'.
+
+Create the following tables, all fields are NOT-NULL unless otherwise specified.
+
+heads
+- id INT PK AI
+- username VC(20)
+- password VC(50)
+- familyName VC(50)
+- firstName VC(50)
+- birthDate DATE
+
+members
+- id INT PK AI
+- headId INT foreign key to heads.id
+- name VC(50) 
+
+ADD: UNIQUE INDEX COMPOSITE on name and headId
+
+Note that table 'heads' will function in a similar fashion as table 'users' was in some of our previous projects.
+
+Make sure your project has the following files:
+- login.php - login a family head using username and password
+- logout.php
+- register.php - register a family head with usual constraints on inputs
+- memberadd.php - only authenticated users may access to add a member of family
+- memberedit.php - only authenticated users may access to edit or delete a member of family
+NOTE: in both memberadd and memberedit use AJAX to make sure that person's name for a specific family is unique, if it is not display message.
+ALSO: you must verify that as well when receiving a submission before attempting INSERT or UPDATE
+- nametaken.php?familyId=123&name=Jerry - used in AJAX call above
+- members.php?id=72 - view of list of all members of a family with id provided in URL
+- index.php - list of families with links to view members using members.php?id=123
+- db.php
+- styles.css - to center and provide look&feel for all html content
+
+
+QUIZ 1 MAIN ITEMS:
+* 3-state forms
+* database insert(add) and select(list)
+* basic CSS
+
+* AJAX (possibly)
+* PHP SESSIONS (possibly)
+* editing (possibly)
+
+
+
+
+
+
+
+
+
+
+
