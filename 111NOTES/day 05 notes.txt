@@ -1,0 +1,35 @@
+<?php
+$sql = "SELECT * FROM owners;"
+...
+echo "<select>\n";
+while ($user = mysqli_fetch_assoc($result)) {
+		echo "<option value=" . $user['id'] . ">" .
+			$user['id'] . ": " . $user['name']. "</option>\n";
+}
+echo "</select>\n";
+
+
+?>
+
+<select>
+	<option value=2>2: Jerry</option>
+	<option value=5>5: Maria</option>
+</select>
+
+<input type=radio name="male" checked>
+<?php
+
+////////
+
+// Slim creation and setup
+$app = new \Slim\Slim(array(
+    'view' => new \Slim\Views\Twig()
+        ));
+
+$view = $app->view();
+$view->parserOptions = array(
+    'debug' => true,
+    'cache' => dirname(__FILE__) . '/cache'
+);
+$view->setTemplatesDirectory(dirname(__FILE__) . '/templates');
+

@@ -1,0 +1,40 @@
+DAY 05 HOMEWORK
+===============
+
+
+
+
+PART 2: reading only
+
+About MeekroDB from meekro.com read the following:
+* Quick Start page
+* Documentation page, only sections about
+- query()
+- queryFirstRow()
+- queryOneColumn()
+- queryFirstField()
+- insert()
+- insertUpdate()
+- update()
+- delete()
+- insertId()
+- count()
+- startTransaction() [*]
+- error_handler [*]
+- nonsql_error_handler [*]
+
+About Twig templates from https://twig.symfony.com/ read the following:
+- main index page (summary of twig)
+- https://twig.symfony.com/doc/2.x/templates.html (whole long page)
+
+About PHP Slim v2
+* http://docs.slimframework.com/routing/get/
+* http://docs.slimframework.com/routing/post/
+* http://docs.slimframework.com/routing/params/
+* http://docs.slimframework.com/routing/conditions/
+* http://docs.slimframework.com/request/variables/
+* http://docs.slimframework.com/request/headers/
+* http://docs.slimframework.com/errors/500/  [*]
+* http://docs.slimframework.com/errors/404/  [*]
+
+

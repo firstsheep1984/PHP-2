@@ -1,0 +1,81 @@
+Quiz 1 shoutbox
+===============
+
+Create new Netbeans PHP project called quiz1shoutbox.
+You will need the following files in it:
+- db.php - connection to database, session_start
+- shout.php - main shout form
+- user.php?user=Jerry - show only shouts from a particular user name
+- styles.css - make the app look nicer
+
+You are not allowed any additional files in your project.
+
+Create database 'quiz1shout' with user 'quiz1shout' accessible from localhost. Autogenerate password and save it in db.php along with the rest of connection information.
+
+Create table 'shouts' with the following columns:
+- id INTEGER PRIMARY KEY AUTO_INCREMENT
+- name VARCHAR(20) INDEX
+- message VARCHAR(100)
+- tsPosted TIMESTAMP default CURRENT_TIMESTAMP
+
+
+db.php
+------
+
+This file is used by all other PHP files.
+You must connect to database and die() in case of connection failure with appropriate message from the SQL server explainig the reason.
+
+You should also activate PHP Sessions mechanism here so you don't have to do it in other files.
+
+
+shout.php
+---------
+
+Consists of a 3-state form submitted via POST, followed by a list of last 10 shouts, from newest to oldest, followed by count of shouts done in current web browsing session, similar to the following ascii art.
+
+Name: [_________________]
+Message: [________________________]
+[[Shout]]
+
+* On 2017-11-04 12:59:45 Alabama shouted: Anyone?
+* On 2017-11-04 12:33:17 Alabama shouted: I am here!
+* On 2017-11-04 10:23:44 Jerry shouted: Hi everyone
+
+You have shouted _2_ times from this browser session.
+
+
+
+On form submission you will verify the following:
+- name must be 2-20 characters long and consist only of uppercase, lowercase characters, numbers, spaces and underscores (use regexp)
+- message must be 1-100 characters long
+
+If name is correct it must be kept in the form (displayed again) so user doesn't have re-enter it every time.
+
+On failed submission you must display (above the form) reasons for why submission failed.
+
+
+On both successful or failed submission you still display all the rest: the form, the list of latest 10 shouts and the count of shouts done in current browsing session.
+
+On successful submission you also increment current count of shouts in this web browser session.
+
+
+user.php?user=Jerry
+--------------------
+
+Takes a URL parameter 'user', executes an SQL SELECT query to fetch all records where name matches 'user' value. If no records are found display "no records found", otherwise display ul/li list of shouts.
+If 'user' parameter was not provided display an error message saying so.
+
+
+Other notes
+-----------
+
+You are required to apply best PHP programming practices such as naming variables in self-documenting way, preventing SQL injection, handling SQL errors after every query, etc.
+
+Your HTML should validate with w3validator without errors (warnings are allowed).
+
+
+What to submit
+--------------
+
+Export your database and save in the main directory of your project.
+ZIP-up directory of your project and upload the ZIP file.
