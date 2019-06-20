@@ -1,0 +1,13 @@
+{% extends "master.html.twig" %}
+
+{% block content %}
+    <p>Are you sure you want to delete the following product?</p>
+    <p>{{item.id}}: {{item.name}} at {{item.price}}</p>
+    <div>{{item.description}}</div>
+    <br>
+    <button style="margin-right: 20px" onclick="window.location='/admin/products/list'">Cancel</button>
+    <form style="display:inline" method="post" action="/admin/products/delete/{{item.id}}">
+        <input type="hidden" name="confirmed" value="true">
+        <input type="submit" value="Delete forever">
+    </form>
+{% endblock %}

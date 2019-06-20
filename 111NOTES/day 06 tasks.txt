@@ -1,0 +1,21 @@
+DAY 06 TASKS
+============
+
+TASK 1:
+
+In slimshop17 add handlers for
+GET /register
+POST /register
+to implement 3-state form for user registration.
+
+You must use PHP Slim, Twig templates and MeekroDB libraries like we've done in class.
+
+You will need to create two Twig templates:
+register.html.twig
+register_success.html.twig
+
+TASK 2:
+
+Implement /login functionality, including setting session
+
+

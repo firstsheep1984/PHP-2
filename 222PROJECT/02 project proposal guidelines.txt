@@ -1,0 +1,56 @@
+Project proposal requirements
+=============================
+
+Page 1 content:
+---------------
+
+* Title of the project
+* Names of members of the team
+* Project description in 2-3 paragraphs
+(usually 10-15 lines) - do NOT copy&paste from Wikipedia or other sources.
+* Bullet-point list of:
+- technologies used,
+- special features,
+- additional libraries,
+- challenging items that were not done in class, etc.
+
+NOTE: Proposal is NOT A COMMITMENT.
+This is a basis for discussion.
+Put in rather more than less.
+
+NOTE: No copy&paste from Wikipedia or other such sources.
+
+
+Page 2 content:
+---------------
+
+Design of the database. You may use PhpMyAdmin
+or MySQL Workbench designer and take a screenshot
+similar to http://i.stack.imgur.com/yQxfY.png
+
+You should include ALL elements you may include
+in your project. Those you are not sure about mark
+with (?) question mark so you can discuss them with
+the teacher.
+
+About 5 tables for 2-people team project is usually good.
+
+
+Page 3-4 content (1 or 2 pages):
+--------------------------------
+
+Mockups or screenshots of pages that illustrate how user will interact with the website. 
+
+Usually 3-4 mock pages are sufficient to communicate the unique elements of your planned project.
+
+Do NOT put standard pages such as Register and Login.
+
+You will want to use some online or desktop tools to create the mockup, such as https://balsamiq.cloud/ or similar https://www.creativebloq.com/wireframes/top-wireframing-tools-11121302
+
+MAXIMUM TOTAL ABOUT 4 PAGES !!!
+
+
+PLEASE PRINT YOUR PROJECT PROPOSAL (to discuss)
+
+LATER: UPLOAD IT TO LEA AS WELL (for the record)
+*AFTER* APPROVED BY THE TEACHER.

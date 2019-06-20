@@ -1,0 +1,60 @@
+DAY 06 HOMEWORK
+===============
+
+TASK 1: Start figuring out who will be your partner for the project.
+
+Most important is who will be your project partner.
+Find someone who you can work with, ideally within 15 percentage points of your own final grade for DotNet 2 course.
+
+Your partner is more important at this point than the topic of your project.
+
+NOTE: All teams will have 2 members exactly.
+
+
+TASK 2:
+
+Continue working on 'slimshop17' project.
+
+By now you should have the following URLs implemented:
+/register - 3 state form
+/login - 3 state form with sessions setting
+/logout
+
+All your pages must use twig templates inheritance and CSS.
+
+Implement the following URLs:
+
+NOTE: all /admin URLs are accessible for authenticated users only
+
+/admin/products/add - 3 state form to add new product (skip adding picture for now)
+
+/admin/products/list - html table with products, each product has links to "edit" or "delete" URLs. On top, above the table "add product" link is visible.
+
+/admin/products/edit/:id - 3 state form for editing a product with given id
+
+/admin/products/delete/:id - page that asks for confirmation of a product before deleting it
+
+/ - index page, user-friendly list of products, when a product is clicked it takes user to single-product view
+
+/products/:id - user-friendly display of a single product with "add to cart" button (not functional yet)
+
+
+DONE:
+- AJAX in /register
+- /forbidden redirection
+- logging with monolog
+
+TOMORROW:
+- Meekrodb custom error handling and logging
+- ipd17.com registration and hosting setup
+- transfer of slimshop to the server
+- brainstorming project ideas
+
+?? - delete article
+
+FRIDAY:
+- server use of database
+- security of php application - .htaccess deny
+- maybe file uploads
+
+

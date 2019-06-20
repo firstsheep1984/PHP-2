@@ -1,0 +1,29 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Access denied{% endblock %}
+
+{% block content %}
+    <p><a href="/admin/products/add">add product</a></p>
+    <table border="1">
+        <tr><th>#</th><th>name</th><th>description</th><th>price</th><th>image</th><th>actions</th></tr>
+        {% for p in list %}
+        <tr>
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.price}}</td>
+            <td>todo</td>
+            <td>
+                <!-- method 1 - simple h-ref text link -->
+                <!-- <a href="/admin/products/edit/{{p.id}}">Edit</a> -->
+                <!-- method 2 - button with javascript -->
+                <button onclick="window.location='/admin/products/delete/{{p.id}}';">Delete</button>
+                <!-- method 3 - form with submit button -->
+                <form action="/admin/products/edit/{{p.id}}">
+                    <input type="submit" value="Edit">
+                </form>
+            </td>
+        </tr>                
+        {% endfor %}
+    </table>
+{% endblock content %}

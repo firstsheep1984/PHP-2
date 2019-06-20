@@ -1,0 +1,69 @@
+<?php
+
+$app = new Slim();
+
+\Slim\Route::setDefaultConditions(array(
+    'id' => '[1-9][0-9]*' // 1 or higher number
+));
+
+$app->get('/cars/:id', function($id) {
+	
+});
+
+$app->get('/todos/sorted/:orderBy', function($orderBy) {
+	$DB::query("SELECT * FROM todos ORDER BY %l", $orderBy);
+}->conditions(array('orderBy' => '(id|task|dueDate)'));
+
+$app->get('/archive(/:year(/:month(/:day)))',
+	function ($year = 2010, $month = 12, $day = 05) {
+		echo sprintf('%s-%s-%s', $year, $month, $day);
+});
+
+$app->get('/todos/:id(/:operation)', function($operation = 'view') {	
+	
+})->conditions(array('operation' => 'edit|delete|view'));
+
+$app->get('/todos(/:operation)', function($operation = 'list') {
+	
+});->conditions(array('operation' => 'list|add'));
+
+
+?>
+GET /todos/7
+GET /todos/7/view
+GET /todos/7/edit
+GET /todos/7/add
+GET /todos/7/delete
+
+GET /todos
+GET /todos/list
+GET /todos/add
+
+GET /todos/blah => 404
+
+
+3 types of web virtual hosts:
+1. Name-based - every website has a different DNS name
+2. IP-based - one IP address for each one website
+3. port-based - every website has a different port number (WE CHOOSE THIS ONE)
+
+
+URLs handled by an e-commerce website slimshop17
+/ - index - list of all products, with links to register/login
+/register - 3-state form
+/login - 3-state form
+/logout
+/products/:id - view single product with ability to add to cart
+
+We will need CRUD functionality to manage products
+/admin/products/list
+/admin/products/add
+/admin/products/edit/:id
+/admin/products/delete/:id
+
+Later we may add /cart implementation
+
+
+
+
+

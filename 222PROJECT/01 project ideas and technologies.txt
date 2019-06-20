@@ -1,0 +1,25 @@
+PROJECT IDEAS:
+* Daycare (image capture on registration, charts for analysis, calendar for scheduling, different classes users e.g. parent, educator, manager)
+* Recipe site, multiple users, sharing recipies, search, suggested, likes, categories, tags, meal planner, calendar, single or multiple picture upload)
+* Online booking system for car rental (wizard for booking, calendar view of cars for manager, statistics about use displayed as charts)
+* Online restaurant ordering system, either generic restaruant with a menu or specialized for pizza
+* Kijiji clone, eBay clone, Amazon clones
+
+
+
+
+PROJECT TECHNOLOGIES AND FUNCTIONALITIES
+* All projects must use: PHP Slim, MeekroDB, Twig, Monolog
+* AJAX
+* Other libraries, (use Packagist to find them) e.g.
+- Facebook login, Google maps, ReCaptcha
+- jQuery libraries, e.g. menus, mobile devices support
+- Bootstrap
+- CSS for printing
+- multiple languages support
+- HTML 5 canvas, camera support, GPS/location services
+- charts in HTML5 usually
+- calendar library
+
+* cart, email password recovery, ...
+
