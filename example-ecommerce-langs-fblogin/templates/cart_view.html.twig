@@ -1,0 +1,43 @@
+
+<div class="row" id="cartItems" style="overflow-x:auto;">
+    {% if  user or fbUser %}
+    {% if cartItems %}
+   <table>
+       
+    <tr><th>#</th><th>{{"Product"|trans}}</th><th>{{"Item name"|trans}}</th>
+        <th>{{"Unit price"|trans}}</th><th>{{"Quantity"|trans}}</th>
+        <th>{{"Total"|trans}}</th> <th>{{"Calories"|trans}}</th><th></th></tr>
+            {% for item in cartItems %}
+        <tr><td>{{loop.index}}</td>
+            <td><img class="img-responsive cartImage" src="data:image/png;base64,{{item.picture}}" alt="product image" ></td>
+            <td><span>{{item.name}}</span></td>
+            <td>{{item.price}}</td>
+            <td><input class="quanInput" type="number" value="{{item.quantity}}" style="width: 40px; height:30px;"
+                      oninput="changedQuantity({{item.ID}})" id="{{item.ID}}"></td>
+            <td><span>{{item.total}}</span></td>
+            <td><span>{{item.nutritionalValue}}</span></td>
+            <td><button class="btn btn-success" onclick="removeItem({{item.productID}})">{{"Remove from cart"|trans}}</button></td>
+        </tr>
+        
+    {% endfor %}
+</table>
+ <a href="/" style=" " class="btn btn-success ">{{"Ad more to cart"|trans}} </a>
+<hr>
+        <div id="totals">
+        {{"Total Order"|trans}}: <span id="total">{{cartTotal}}</span><br><br><br>
+        {{"Tax"|trans}}: <span id="tax">{{cartTax}}</span><br><br><br>
+        {{"Total to pay at delivery"|trans}}: <span id="totalToPay">{{cartTotalToPay}}</span><br><br><br>
+        <a href="/deliveryAddress" class="btn btn-lg btn-primary btn-block  linkButtons" id="placeOrder">{{"Place Order"|trans}}</a>
+
+        </div>
+        {% else %}
+            <h4>No Products in the Cart Yet</h4>
+            <a href="/" class="btn btn-lg btn-primary btn-block linkButtons">{{"Continue"|trans}} </a>
+            {% endif %}
+                 
+                    
+{% else %}
+    <h4>{{"Only logged users can access the cart"|trans}}</h4>
+{% endif %}
+
+    </div>

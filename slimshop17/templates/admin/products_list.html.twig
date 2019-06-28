@@ -1,6 +1,6 @@
 {% extends "master.html.twig" %}
 
-{% block title %}Access denied{% endblock %}
+{% block title %}Products list{% endblock %}
 
 {% block content %}
     <p><a href="/admin/products/add">add product</a></p>
@@ -12,7 +12,7 @@
             <td>{{p.name}}</td>
             <td>{{p.description}}</td>
             <td>{{p.price}}</td>
-            <td>todo</td>
+            <td><img src="/{{p.imagePath}}" width="100"></td>
             <td>
                 <!-- method 1 - simple h-ref text link -->
                 <!-- <a href="/admin/products/edit/{{p.id}}">Edit</a> -->

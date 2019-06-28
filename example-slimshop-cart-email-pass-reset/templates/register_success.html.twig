@@ -1,0 +1,20 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Successful registration{% endblock %}
+
+{% block head %}
+    <meta http-equiv="refresh" content="5;url=/login" />
+    <!-- 
+    <script>
+        $(document).ready(function () {
+            window.setTimeout(function () {
+                location.href = "/login";
+            }, 5000);
+        });
+    </script> -->
+{% endblock %}
+
+{% block content %}
+    <h1>Registration successful</h1>
+    <a href="/login">Click to login</a> or you will be redirected in 5 seconds.
+{% endblock %}

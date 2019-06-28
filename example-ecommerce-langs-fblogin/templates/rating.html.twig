@@ -1,0 +1,15 @@
+<p class="pull-right" ><span>{{reviewCount}}</span> {{ "reviews"|trans }}</p>
+<p>
+    {% if ratingAverage > 0 %}
+        {% for i in range(1,ratingAverage) %}
+            <span class="glyphicon glyphicon-star"></span>
+        {% endfor %}
+    {% endif %}
+    {% set t = (5 - ratingAverage) %}
+    {% if t > 0 %}
+        {% for s in range(1,t) %}
+            <span class="glyphicon glyphicon-star-empty" id="star-empty"></span>
+        {% endfor %}
+    {% endif %}
+
+    <span id="averageStars">{{ratingAverage}}</span> {{ "stars"|trans }}</p>

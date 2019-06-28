@@ -1,0 +1,69 @@
+{% extends "master.html.twig" %}
+
+{% block title %} E-Shop{% endblock %}
+{% block head %}   
+    <!-- Custom CSS -->
+    <link href="/bootstrap/css/shop-homepage.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="/js/index_script.js"></script>
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- Page Content -->
+    <div class="container">
+
+
+        <div class="col-md-9" style="width:100%; margin-bottom:50px;">
+
+
+
+            <div class="col-md-12">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner carstyle">
+                        <div class="item active car">
+                            <img class="slide-image" src="/images/car-1.jpg" alt="car1">
+                        </div>
+                        <div class="item">
+                            <img class="slide-image" src="/images/car-2.jpg" alt="car2">
+                        </div> 
+                        <div class="item">
+                            <img class="slide-image" src="/images/car-3.jpg" alt="car3">
+                        </div> 
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="row" style="background-color: white; border-radius:8px;">
+            <div class="col-md-3 category">
+                <p class="lead">{{"Categories"|trans}}</p>
+                <div class="list-group" id="navCategory">
+                    {% for category in categoryList %}
+                        <button  class="list-group-item generalButton" id="{{category.ID}}">{{ category.name }} </button>
+                    {% endfor %}
+                </div>
+                <label id="lbVegetarian" for="cbVegetarian" width="50">{{"Vegetarian"|trans}}</label><br>
+                <input id="cbVegetarian" type="checkbox">
+            </div>
+
+            <div class="row" id="index-products">
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

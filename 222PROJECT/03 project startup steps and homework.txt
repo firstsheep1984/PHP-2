@@ -1,0 +1,47 @@
+Project Startup Requirements and Steps:
+
+1. For your team project create a new subdomain in ipd17.com, then create database on the server as well.
+
+2. Create project Git repository - shared by both team members.
+
+3. Watch "Scrum in 10 minutes" video https://www.youtube.com/watch?v=XU0llRltyFM
+
+4. Create Trello board - shared by both team members.
+
+5. In Git project working copy create "dailyscrum.txt" file that will be shared by both team members.
+Do your first Daily Scrum right here right now planning on what each of you will do by tomorrow morning.
+
+Make sure to follow Daily Scrum example and instructions provided.
+Make sure to commit that file to repository every day starting today.
+
+REMEMBER: Next time you come to class the first thing you will do will be Daily Scrum with your team member / partner. Do not wait for the teacher to remind you - when both of you arrive to class - do the Scrum.
+
+REMEMBER: After each Daily Scrum you also must update Trello board to reflect your project's progress.
+
+Part of your grade (use of tools) reflects your use of Git, Trello, and Daily Scrum.
+
+USUAL CAUSES OF POINTS LOSS:
+* Not using Git
+* Avoiding Git conflicts at all costs
+* Having two separate projects (with or without Git) for two project members
+* Not doing scrum on regular basis that is committed to Git every time
+* Not updating Trello daily
+
+6. Regular Scrum and Trello requirements.
+- Trello must be updated at least once on every workday
+- Scrum must be done at least once on every workday in the morning, plus one more time before you leave the classroom for a weekend.
+
+During weekends you should be able to communicate with each other.
+Make sure you have exchanged emails and phone numbers.
+
+One useful tool for remote collaboration is desktop session sharing using TeamViewer.
+
+
+7. HOMEWORK - REQUIRED.
+-----------------------
+
+a) Break down the project into at least 5, preferably 10 "User Stories" and place them on the Trello board.
+
+b) In each User Story create Checklist (todo) and add at least 3 (preferably 5-10 steps to it. The last step is always "peer-test it".
+
+

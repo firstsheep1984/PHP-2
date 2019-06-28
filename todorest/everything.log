@@ -1,0 +1,8 @@
+[2019-06-27 17:06:20] main.ERROR: SQL Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '** FROM todos' at line 1 [] []
+[2019-06-27 17:06:20] main.ERROR: SQL Query: SELECT *** FROM todos [] []
+[2019-06-27 17:09:52] main.ERROR: SQL Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '** FROM todos' at line 1 [] []
+[2019-06-27 17:09:53] main.ERROR: SQL Query: SELECT *** FROM todos [] []
+[2019-06-27 18:13:21] main.ERROR: SQL Error: Unknown column 'aaatask' in 'field list' [] []
+[2019-06-27 18:13:21] main.ERROR: SQL Query: INSERT INTO `todos` (`aaatask`,`dueDate`,`status`) VALUES ('wash car AGAIN', 'asdsadfsa2019-06-25', 'doneeeeee') [] []
+[2019-06-27 18:14:26] main.ERROR: SQL Error: Unknown column 'aaadueDate' in 'field list' [] []
+[2019-06-27 18:14:26] main.ERROR: SQL Query: INSERT INTO `todos` (`aaadueDate`,`status`) VALUES ('asdsadfsa2019-06-25', 'doneeeeee') [] []

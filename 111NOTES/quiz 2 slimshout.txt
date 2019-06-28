@@ -1,0 +1,77 @@
+QUIZ 2 - PHP - Slim/Twig/MeekroDB/Monolog/AJAX/jQuery/CSS
+
+Create new PHP project in Netbeans, call it quiz2slimshout.
+Rename index.php quiz2.php and point .htaccess to it.
+Install the standard libraries using composer, create subdirectories logs, templates, cache.
+
+Configure Apache to serve this project on a separate port, e.g. 8009.
+
+Create user with database named 'quiz2slimshout17'.
+Add the following tables:
+
+users
+- id INT PK AI
+- username VC(20) UNIQUE [***]
+- password VC(100)
+- imagePath VC(200) UNIQUE [***]
+
+shouts
+- id INT PK AI
+- authorId INT INDEX to setup Foreign Key to users.id
+- message VC(100)
+
+You will implement a web application that uses the following URLs:
+
+/
+/login
+/logout
+/register
+/forbidden
+/internalerror
+
+/shouts/add
+/shouts/list
+/ajax/loadshouts and /ajax/loadshouts/by/:username - single handler
+
+Detailed descriptions:
+
+/ index page with a-href links to login / register / logout / shouts list
+
+/login - standard 3-state for for login using session
+/logout - standard logout
+/register - standard register
+ - username must be composed of 5-20 characters only uppercase or lowercase letters and digits and underscore. Must not exist in database yet.
+ - password must be composed of 5-100 characters with at least one uppercase, one lowercase and one digit
+ - image must be provided in one of jpg/gif/png formats, width and height must both be within 50 to 500 pixels range. Saved into 'uploads/' directory. [***]
+
+/forbidden and /internalerror - standard pages
+ 
+/shouts/add - 3 state form
+ - only accessible for authenticated users
+ - message must be 1-100 characters long, id is taken from session
+ - on successful submission add record to shouts and provide user with link to /shouts/list
+ - on failed submission display error message and re-display the form
+
+/shouts/list
+ - initially display list of all shouts in an html table, one of the columns must be user's avatar image, width set to 50 pixels. Column list: id of shout, author name, author avatar, message [***]
+ - above the table provide link to /shouts/add with text "Add new shout"
+ - above the table provide drop-down (combo box) with one empty entry and names of all users in it. When a name is selected you will re-load the content of the table using Ajax $...load() function to only display shouts coming from that one particular user. If empty drop-down entry is selected then load all shouts from all users.
+ 
+/ajax/loadshouts and /ajax/loadshouts/by/:username - single handler
+ - suggested PHP Slim handler:
+ $app->get('/ajax/loadshouts(/by/:username)', function($username = "") use ($app, $log) { });
+ - handler sends back to web browser content of html table with all shouts from a particular username or all shouts if no username was provided
+ - NOTE: If you prefer to use :id instead of :username it is allowed
+
+FINAL NOTES:
+* You must use PHP Slim/Twig/MeekroDB/Monolog/AJAX/jQuery/CSS technologies as we have done in class
+* You must apply best practices as we have practiced and explained in class
+* Basic CSS is required to center the contents and make it look pleasant
+* Master twig template is required as well.
+
+SUBMISSION:
+1. Export you database from PhpMyAdmin and save *.sql file in the main directory of your quiz2slimshout project.
+2. Take screen shots (use "Snipping Tool") of the following URLs pages: /login, /register, /shouts/add, /shouts/list and save them in the main directory of the project.
+3. ZIP-up the entire project directory including vendor (NO RAR, 7ZIP or other compressors please).
+4. Upload the ZIP file to LEA.
+

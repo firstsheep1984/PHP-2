@@ -1,0 +1,18 @@
+API NOTES
+
+http://api.facebook.com/api/v3.3/me?fields=id,name
+
+CRUD ~= RESTful API
+
+
+GET /todos         ~= SELECT * FROM todos
+GET /todos/43      ~= SELECT * FROM todos WHERE id=43
+POST /todos        ~= INSERT INTO todos ...
+PUT /todos/7       ~= UPDATE ...
+DELETE /todos/11   ~= DELETE ...
+
+
+
+/ajax/getcarsavailable/2020-01-02/2020-01-15
+
+/ajax/getcarsavailable?from=2020-01-02&to=2020-01-15

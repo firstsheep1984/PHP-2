@@ -1,0 +1,44 @@
+<div id="reviewPage">
+    {% if reviewList %}
+{% for rating in reviewList %}
+    <div class="row" style="margin: 25px 0 0 0">
+        <div class="col-md-12">
+            {% if rating.rating  > 0 %}
+                {% for i in range(1,rating.rating) %}
+                    <span class="glyphicon glyphicon-star"></span>
+                {% endfor %}
+            {% endif %}
+            {% set t = (5 - rating.rating) %}
+            {% if t > 0 %}
+                {% for s in range(1,t) %}
+                    <span class="glyphicon glyphicon-star-empty" id="star-empty"></span>
+                {% endfor %}
+            {% endif %}
+
+            {{rating.customerFirstName}}
+            <span class="pull-right">{{rating.daysCount }} {{"days ago"|trans}}</span><br>
+            <p>{{rating.review}}</p>
+        </div>
+    </div>
+{% endfor %}
+</div>
+<div style="text-align: center;">
+<ul class="pagination">
+    {% if reviewList %}
+        {% if pag.current > pag.min %}
+            <li><button id="previous" onclick="changePage({{pag.current - 1}})">«</button></li>
+            {% endif %}
+        <li><button onclick="changePage({{pag.current}})" id="pageButton" class="pageButton">{{pag.current}}</button></li>
+
+        {% if page.current < pag.max %}
+            <li><button id="next" onclick="changePage({{pag.current + 1}})">»</button></li>
+            {% endif %}
+        {% endif %}
+</ul>
+        {% else %}
+            <div style="text-align: center;"
+            <h4>{{"No review yet for this product"|trans}}</h4>
+            </div>
+{% endif %}
+</div>
+

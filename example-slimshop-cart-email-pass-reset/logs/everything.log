@@ -1,0 +1,4 @@
+[2017-11-17 18:56:45] main.ERROR: Database error: Unable to connect to MySQL server! Error: Access denied for user ''@'localhost' to database 'slimshop2' [] []
+[2017-11-17 18:58:36] main.DEBUG: User failed for email jerry@jerry.com from IP ::1 [] []
+[2017-11-17 18:59:46] main.INFO: User 7 created [] []
+[2017-11-17 18:59:52] main.DEBUG: User 7 logged in successfuly from IP ::1 [] []

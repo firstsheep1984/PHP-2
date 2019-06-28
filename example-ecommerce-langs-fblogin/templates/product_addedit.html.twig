@@ -1,0 +1,42 @@
+{% if user.role == 'admin' %}    
+<div id="container-addedit_product">
+        <div id="top-side-addedit">
+   
+            <div class = "scrolltable">
+                <table>
+                    <tr id = "headRow">
+                        <th> Image </th>
+                        <th> ID </th>
+                        <th class="nameRow"> Name </th>
+                        <th> Price </th>
+                        <th> Nutr_Value </th>
+                        <th> IsVeget </th>
+                        <th class = "descriptionRow"> Description_en </th>
+                        <th class = "descriptionRow"> Description_fr </th>
+                    </tr>
+                </table>
+                <div class = "body">
+                    <table id = "tbProducts">
+                        {% for product in prodTable %} 
+                                <tr class = "productHeight">
+                                    <td> <img src = "data:image/png;base64,{{product.picture}}" alt = "product image" width = "100px"> <br> <br>
+                                        <button <button  onclick='getProductsTable({{product.productID}})' class = "btEdit"> Edit </button></td>
+                                    <td id = "{{product.productID}}" class = "tdID">{{product.productID}} </td>
+                                    <td class="nameRow">{{product.productname}} </td>
+                                    <td>{{product.price}} </td>
+                                    <td>{{product.nutritionalValue}} </td>
+                                    <td>{{product.isVegetarian}} </td>
+                                    <td class = "descriptionRow">{{product.description_en}} </td>
+                                    <td class = "descriptionRow">{{product.description_fr}} </td>
+                                </tr>                         
+                        {% endfor %} 
+                    </table>
+                </div> 
+            </div>
+        </div>
+                    
+        <div id = "bottom-side-addedit">
+       
+        </div>  
+    </div> 
+{% endif %}

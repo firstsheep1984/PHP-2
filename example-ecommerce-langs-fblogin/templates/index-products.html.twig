@@ -1,0 +1,54 @@
+{% if prodList %}
+    <div style="text-align: center;" id='swirl'>
+        <ul class="pagination">
+            {% if prodList %}
+                {% if pag.current > pag.min %}
+                    <li><button id="previous" onclick="changePage({{pag.current - 1}})">«</button></li>
+                    {% endif %}
+                <li><button onclick="changePage({{pag.current}})" id="pageButton" class="pageButton">{{pag.current}}</button></li>
+
+                {% if page.current < pag.max %}
+                    <li><button id="next" onclick="changePage({{pag.current + 1}})">»</button></li>
+                    {% endif %}
+                {% endif %}
+        </ul>
+    </div>
+    {% for product in prodList %}    
+        <div class="col-sm-4 col-lg-4 col-md-4 div-products">                          
+            <div class="thumbnail product-thumbnail thumbstyle">
+                <img src="data:image/png;base64,{{product.picture}}" alt="product image" width="100px">
+                
+               <a href="/product/{{product.slugname}}"><img src="/images/cart.png" id="imgCart" class="cart" placeholder="Add to cart"></a>
+                <div class="caption">
+                    <h4 class="pull-right">$ {{ product.price }}</h4><br>
+                    <h4><a href="/product/{{product.slugname}}">{{ product.name }}</a>
+                        
+                    </h4>
+                    <p>{{ product.description }}</p>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">{{product.totalReviews}} {{"reviews"|trans}}</p>
+                    <p>
+                        {% if product.stars > 0 %}
+                            {% for i in range(1, product.stars ) %}
+                                <span class="glyphicon glyphicon-star" id="star-full"></span>
+                            {% endfor %}
+                        {% endif %}
+                        {% set t = (5 - product.stars) %}
+                        {% if t > 0 %}
+                            {% for s in range(1, t) %}
+                                <span class="glyphicon glyphicon-star-empty" id="star-empty"></span>
+                            {% endfor %}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+
+{% else %}
+    <div style="margin-top:600px;">
+        <h4> {{"There are no products in this category yet"|trans}}</h4>
+    </div>
+{% endif %}

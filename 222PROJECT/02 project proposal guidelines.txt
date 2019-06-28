@@ -13,6 +13,7 @@ Page 1 content:
 - special features,
 - additional libraries,
 - challenging items that were not done in class, etc.
+* List of URLs website will handle
 
 NOTE: Proposal is NOT A COMMITMENT.
 This is a basis for discussion.

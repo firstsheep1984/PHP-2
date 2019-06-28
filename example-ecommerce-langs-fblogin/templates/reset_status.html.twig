@@ -1,0 +1,18 @@
+{% extends "master.html.twig" %}
+
+{% block title %}{{"Password Reset"|trans}}{% endblock %}
+
+{% block content %}
+    <div class="container" id="loginContainer">
+        {% if failed %}
+            <h1>{{"Invalid attempt to reset password."|trans}}</h1>
+
+            <a href="/forgotPassword" class="btn btn-lg btn-primary btn-block linkButtons">{{"Try again"|trans}}</a>
+        {% else %}
+            <h1>{{"Password Resseted"|trans}}</h1>
+
+            <a class="btn btn-lg btn-primary btn-block linkButtons" href="/login">{{"Continue"|trans}}</a>
+
+                {% endif %}
+                </div>
+                {% endblock %}

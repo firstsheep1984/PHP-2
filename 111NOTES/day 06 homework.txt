@@ -53,8 +53,12 @@ TOMORROW:
 ?? - delete article
 
 FRIDAY:
-- server use of database
+- finish transferring slimshop to ipd17 server
+- using database on server
+- netbeans source synchronization with ftp server
 - security of php application - .htaccess deny
-- maybe file uploads
+- Daily Scrum and Trello (homework: Trello 10 user stories broken down into todos)
+
+? - maybe file uploads - slimshop add product
 
 

@@ -1,0 +1,84 @@
+{% extends "master.html.twig" %}
+
+{% block title %} {{ product.name }} {% endblock %}
+{% block head %}   
+    <!-- Bootstrap Core CSS -->
+    <link href="/bootstrap/css/shop-item.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="/js/product_script.js"></script>
+
+{% endblock %}
+
+
+{% block content %}
+    {% if product %}
+
+        <div class="container">
+            <div class="row">
+
+
+                <span id="productID" hidden>{{product.ID}}</span>
+                <div class="col-md-9">
+
+                    <div class="thumbnail"> 
+
+                        <img class="img-responsive productPageImage" src="data:image/png;base64,{{product.picture}}" alt="product image" width="200px">
+                        <div class="caption-full">
+                            <h4 id="productPrice" class="pull-right">${{product.price}}</h4>
+                            <h4>{{product.name}}</h4>
+                            <p>{{product.description}}</p>
+                        </div>
+                        <div>
+                            <img src="/images/calories.png" alt="nutritional value" style="width:50px;"><span>Calories: {{product.nutritionalValue}}</span>
+                        </div>
+                        <div class="ratings" id="ratingsProduct">
+
+                        </div>
+                        <div style="text-align: center; margin-bottom:20px;">
+                            <form class="form-signin" method="POST" action="/cart">
+                                <input type="hidden" name="productID" value="{{product.ID}}">
+                                {{"Quantity"|trans}}: <input type="number" name="quantity" value="1" style="width: 50px;"><br><br>
+                                <input class='btn btn-lg btn-primary btn-block linkButtons' type="submit" value="{{"Add to Cart"|trans}}" style=''>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="well">
+
+
+                        {% if user or fbUser %}
+                            <div class="text-right">
+                                <button class="btn btn-success" id="leaveReview">{{"Leave a Review"|trans}}</button>
+                            </div>
+                            <div id ="reviewForm">
+                                <label>{{ "Review"|trans }}: </label><br><textarea rows="4" cols="50" name="reviewText"></textarea><span class="error"></span><br><br>
+                                <label>{{ "Rate"|trans }}: </label>
+                                <div id="selectedRating">
+                                    <span class="glyphicon glyphicon-star-empty reviewEmptyStar" id="star1"></span>
+                                    <span class="glyphicon glyphicon-star-empty reviewEmptyStar" id="star2"></span>
+                                    <span class="glyphicon glyphicon-star-empty reviewEmptyStar" id="star3"></span>
+                                    <span class="glyphicon glyphicon-star-empty reviewEmptyStar" id="star4"></span>
+                                    <span class="glyphicon glyphicon-star-empty reviewEmptyStar" id="star5"></span>
+                                </div>        
+                                <br><br> <button class="btn btn-success" id="postReview">{{"Leave a Review"|trans}}</button>
+                            </div>
+                        {% else %}
+                            <h4> {{ "Please"|trans }}<a href="/login"> {{ "Sign In2"|trans }} </a> {{ "OR"|trans }} 
+                                <a href="/register"> {{ "Sign Up"|trans }} </a> {{ "to post a review"|trans }}
+                            {% endif %}
+                            <hr>
+                            <div id="reviewList">
+
+                            </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% else %}
+        <h1>Product not found. <a href="\">Click to continue</a></h1>
+            {% endif %}
+        {% endblock %}  

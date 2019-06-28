@@ -1,0 +1,61 @@
+{% block javascript %}
+<script>
+    function previewImage(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#uploadImage').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#chooseImage").change(function(){
+    previewImage(this);
+});
+</script>
+{% endblock %}
+{% if user.role == 'admin' %}
+<form method="POST" id="containerForm" enctype="multipart/form-data">    
+    <div id="left-side-addedit">                     
+        <label>ID: </label>
+        <input type="number" name="productID" id="productID" value="{{p.productID}}"><br><br>
+        <label>Product name en: </label>
+        <input type="text" name="name_fr" value="{{p.name_en}}"><br><br>
+        <label>Product name fr: </label>
+        <input type="text" name="name_en" value="{{p.name_fr}}"><br><br>
+        <label>Category: </label>
+        <select name="categoryID" id="categoryName">
+                     {% for category in categoryList %}
+                    <option value='{{category.categoryID}}' {% if p.categoryname == category.categoryname %} selected {% endif %}>{{category.categoryname}}</option>
+                       {% endfor %}
+        </select><br><br>
+        <label>Price: </label>
+        <input type="text" name="price" value="{{p.price}}"><br><br>
+        <label>Nutritional value: </label>
+        <input type="text" name="nutritionalValue" value="{{p.nutritionalValue}}" ><br><br>
+        <label>Is vegetarian: </label>
+        {% set selected = false %}
+        {% if p.isVegetarian == 1 %}
+            {% set selected = true %}
+        {% endif %}
+        <input type="checkbox" name="isVegetarian" value="{{p.isVegetarian}}"{% if selected %}checked{% endif %}><br><br>
+    </div>
+    <div id="right-side-addedit">
+        <label  name="description" style="text-align: left; width:50px;">Description: </label><br>
+        <textarea  name="description_en" cols="62" rows="5">{{p.description_en}}</textarea><br><br>
+        <label  name="description" style="text-align: left; width:50px;">Description: </label><br>
+        <textarea  name="description_fr" cols="62" rows="5">{{p.description_fr}}</textarea><br><br>
+        <div id="dvPreview">
+            <img name="picture" id="uploadImage" src="data:image/png;base64,{{p.picture}}"  alt="product image" width="140px">
+            <input type="file" id="chooseImage" name="imageFile" style="width: 200px;margin-top: 10px;">
+        </div><br><br>  
+    </div>  
+    <div id = "divButtons">
+        <input  type="submit" id = "btAddPutProduct" value="Add / Edit product" style="width: 200px; height: 40px;">                   
+        <button id = "btCancelProduct" class = "buttonStyle"> Cancel </button>
+    </div>
+</form>
+{% endif %}

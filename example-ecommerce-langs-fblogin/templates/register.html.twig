@@ -1,0 +1,60 @@
+{% extends "master.html.twig" %}
+
+{% block title %}{{"Sign Up"|trans}}{% endblock %}
+
+{% block head %}
+    <!-- jQuery -->
+    <script src="/js/register.js"></script>
+{% endblock %}
+
+
+{% block content %}
+<div class="container" id="loginContainer">
+  <div class="row">
+       {% if registerSuccess %}
+                <h1>{{ "Registration Succesful"|trans }}</h1>
+                <a class="btn btn-lg btn-primary btn-block linkButtons" href="/login">{{"Continue"|trans}}</a>
+            {% else %}
+       
+    {% if errorList %}
+        <ul class="errors">
+            {% for error in errorList %}
+                <li>{{ error }}</li>
+                {% endfor %}
+        </ul>
+    {% endif %}
+    
+    <form  method="POST" action="/register" style='text-align: center'>
+        <h2 class="form-signin-heading">{{"Sign Up"|trans}}</h2>
+        <label>{{"First Name"|trans}}: </label> <input type="text" name="firstName" value="{{v.firstName}}" required><br><br>
+        <label>{{"Last Name"|trans}}: </label> <input type="text" name="lastName" value="{{v.lastName}}" required><br><br>
+        <label>{{"Email"|trans}}: </label> <input type="text" name="email" value="{{v.email}}" required><br>
+                <span id="emailExists" style="text-align: right; color: red; position: relative; left: 140px;">*{{"Email already registered"|trans}}</span><br><br>
+                 <label>Gender: </label>
+                {% if v.gender == 'F' %}
+            <label for="female" class="gender">F </label> <input type="radio" name="gender" value="F" id="female" checked>
+            {% else %}
+            <label for="female" class="gender">F </label> <input type="radio" name="gender" value="F" id="female">
+
+                {% endif %}
+               {% if v.gender == 'M' %}
+            <label for="male" class="gender">M </label> <input type="radio" name="gender" value="M" id="male" checked><br><br>
+            {% else %}
+            <label for="male" class="gender">M </label> <input type="radio" name="gender" value="M" id="male"><br><br>
+                {% endif %}
+
+        
+        <label>{{"Address"|trans}}: </label> <input type="text" name="address" value="{{v.address}}" required><br><br>
+        <label>{{"Street"|trans}}: </label> <input type="text" name="street" value="{{v.street}}" required><br><br>
+        <label>{{"City"|trans}}: </label> <input type="text" name="city" value="{{v.city}}" required><br><br>
+        <label>{{"Country"|trans}}: </label> <input type="text" name="country" value="{{v.country}}" required><br><br>
+        
+        <label>{{"Postal Code"|trans}}: </label> <input type="text" name="postalCode" value="{{v.postalCode}}" required><br><br>
+        <label>{{"Phone"|trans}}: </label> <input type="text" name="phone" value="{{v.phone}}" required><br><br>
+        <label>{{"Password"|trans}}: </label> <input type="password" name="pass1" required><br><br>
+        <label>{{"Confirm Password"|trans}}: </label> <input type="password" name="pass2" required><br><br>
+        <input class="btn btn-lg btn-primary btn-block linkButtons" type="submit" value="{{"Create Account"|trans}}" style="width:300px; margin:auto;">
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

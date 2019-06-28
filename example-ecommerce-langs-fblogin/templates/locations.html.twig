@@ -1,0 +1,90 @@
+{% extends "master.html.twig" %}
+
+{% block title %} {{ "home"|trans }} {% endblock %}
+{% block head %}   
+    <!-- Bootstrap Core CSS -->
+    <link href="/bootstrap/css/shop-item.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>-->
+    <!--<script src="/js/locations_script.js"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBGdAE-nd01tQ-SGkwgc0bTDnd4jXa-UM"></script> 
+{% endblock %}
+{% block content %}
+    <div class="container" >
+        <div class="row" style="text-align: right;">
+            <span style="color:white; font-size: 20px;"> {{"Stores near you"|trans}}</span><br>
+            <input id="address" type="text" value="{% if user %}{{user.postalCode}}{%else %} Montreal {% endif %}" />
+            <input id="search" type="submit" value="Search" />
+            <div id="dvMap" style="height: 600px; width: 850px; margin:auto;">
+            </div>
+        </div>
+    </div>
+        <script type="text/javascript">
+            var map = null;
+            var geocoder = geocoder = new google.maps.Geocoder();
+            var markers = [];
+            var infoWindow = null;
+
+            function searchStores(address) {
+                          //  var markers = [];
+                $.ajax({
+                    url: '/nearestStores/' + address,
+                    type: "GET",
+                    dataType: 'json',
+                    // async: false,
+                    success: function (data) {
+                        for (var i = 0; i < data.length; i++) {
+                            var item = data[i];
+                            markers.push(item);
+                        }
+                        LoadMap();
+                    }
+                });
+            }
+            $(document).ready(function () {
+                var address = jQuery('#address').val() || 'Montreal';
+                /*if (map === null)
+                 initializeMap();*/
+                searchStores(address);
+                $('#search').click(function () {
+                    var address = jQuery('#address').val() || 'Montreal';
+                    if (map === null)
+                        LoadMap();
+                    searchStores(address);
+                });
+            });
+            function LoadMap() {
+                var mapOptions = {
+                    center: new google.maps.LatLng(markers['lat'], markers['lng']),
+                    zoom: 8,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var infoWindow = new google.maps.InfoWindow();
+                var latlngbounds = new google.maps.LatLngBounds();
+                var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+
+                for (var i = 0; i < markers.length; i++) {
+                    var data = markers[i]
+                    var myLatlng = new google.maps.LatLng(data['lat'], data['lng']);
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        title: data.title
+                    });
+                    (function (marker, data) {
+                        google.maps.event.addListener(marker, "click", function (e) {
+                            infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.address + "</div>");
+                            infoWindow.open(map, marker);
+                        });
+                    })(marker, data);
+                    latlngbounds.extend(marker.position);
+                }
+                var bounds = new google.maps.LatLngBounds();
+                map.setCenter(latlngbounds.getCenter());
+                map.fitBounds(latlngbounds);
+            }
+        </script>
+
+
+    {% endblock %}  

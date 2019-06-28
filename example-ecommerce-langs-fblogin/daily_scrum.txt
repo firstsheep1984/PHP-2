@@ -1,0 +1,95 @@
+day01--
+
+       Tina
+1.TO DO: Initial Setup Of the project with according libraries and bilingual support. Start working on the products page
+
+
+       Olga
+1.TO DO: Initial Setup of the subdomain/user accouts, database import. Start working on the index page. Start populating products table
+
+
+day02--
+
+       Tina
+1.Done: Initial Setup Of the project with according libraries and bilingual support. Started working on the products page
+2.TODO: Continue product view page. Fix the language support
+
+
+       Olga
+1.Done: Setup subdomain and database on the host server. Started working on the index page. 
+2 Continue working on the index page
+
+
+day03--
+
+       Tina
+1.Done: Worked on the products page. Added reviews form. pagination in progress
+2.TODO: Fix the ajax load of reviews, add pagination. Start working on the cart
+
+
+       Olga
+1.Done: Worked on the design of the index page.
+2 TODO: Implement ajax loading of the products according to categories.
+
+
+
+Day04--
+
+       Tina
+1.Done: Fixed ajax reload of review, changed the pagination 
+2.TODO: Finish implementing the cart functionality and start working on the registration and login.
+. TOASK: TotalPages ? Ask teacher about password recovery table design
+
+
+       Olga
+1.Done: Implemented ajax load products by categories. Started populating products ield in he database
+2 TODO: Finish the products table. Make products link to the products page. Implement slug on product search
+
+WeekEndScrum--
+
+       Tina
+1.Done: Started on cart functionality. Post works. Reimplemented pagination for reviews as per teacher suggestion.
+2.TODO: Implement delete and ajax reload of cart when quantity changed. Implement login, registration, Facebook ApI, geolocation, order registration and sending by email 
+
+
+       Olga
+1.Done: Populated the products table.
+2 TODO: Make products link to the products page. Implement slug on product research. Implement admin/addedditcategory, asdmin/addeditproduct, admin/pendingorders
+
+
+Day07
+        Tina
+1:Done: Implement login, registration, Facebook ApI, geolocation, ad partially order implementation
+.Didn;t do: Implement delete and ajax reload of cart when quantity changed
+.TODo: Finish cart and order
+
+       Olga
+1.Done: Implemented  asdmin/addeditproduct
+2.Didn't do: Implement slug on product research. Implement admin/addedditcategory, admin/pendingorders
+3.Finish admin part of the site
+
+
+
+Day08
+        Tina
+1:Done: Implement delete and ajax reload of cart when quantity changed, worked on the order submition.Implement slug on product research. Fixed the fbUser integraton ad registration
+TODo: Order Submition finish
+
+       Olga
+1.Done: started working on admin/addedditcategory, admin/pendingorders
+3.Finish admin part of the site
+
+
+
+Day09
+        Tina
+1:Done: Finished oder submition.
+TODo: Make locations work, detect delivery time finisih the design problms, fix the DB transactions and error handling, email when order submitted 
+       
+ Olga
+1.Done: continued working on admin/addedditcategory, admin/pendingorders, product add_edit fix problems
+3.Finish admin part of the site. Do the presentation
+
+
+
+

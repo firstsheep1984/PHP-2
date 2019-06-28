@@ -1,0 +1,53 @@
+{% extends "master.html.twig" %}
+
+{% block title %} {{ "Delivery Address"|trans }} {% endblock %}
+{% block head %}   
+    <!-- Bootstrap Core CSS -->
+
+
+    <!-- jQuery -->
+    <script src="/js/address_script.js"></script>
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="container" id="loginContainer">
+
+        <div class="row">
+            {% if  user or fbUser %}
+                {% if registerSuccess %}
+                    <h1>{{ "Registration Succesful"|trans }}</h1>
+                    <a class="btn btn-lg btn-primary btn-block" style="width:150px;margin:auto;" href="/login">{{"Continue"|trans}}</a>
+                {% else %}
+
+                    <ul class="errors" id="errorList">
+                        {% for error in errorList %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                    </ul>
+                {% endif %}
+                <div id="address">
+                    <form method="POST">
+                        <h2 class="form-signin-heading">{{"Verify the delivery address and contact information"|trans}}</h2>
+                        <label>{{"First Name"|trans}}: </label> <input type="text" name="firstName" value="{{v.firstName}}"><br><br>
+                        <label>{{"Last Name"|trans}}: </label> <input type="text" name="lastName" value="{{v.lastName}}"><br><br>
+                        <label>{{"Email"|trans}}: </label> <input type="text" name="email" value="{{v.email}}"><br><br>
+                        <label>{{"Address"|trans}}: </label> <input type="text" name="address" value="{{v.address}}"><br><br>
+                        <label>{{"Street"|trans}}: </label> <input type="text" name="street" value="{{v.street}}"><br><br>
+                        <label>{{"City"|trans}}: </label> <input type="text" name="city" value="{{v.city}}"><br><br>
+                        <label>{{"Country"|trans}}: </label> <input type="text" name="country" value="{{v.country}}"><br><br>
+                        <label>{{"Postal Code"|trans}}: </label> <input type="text" name="postalCode" value="{{v.postalCode}}"><br><br>
+                        <label>{{"Phone"|trans}}: </label> <input type="text" name="phone" value="{{v.phone}}"><br><br>
+                        <button class="btn btn-lg btn-primary btn-block linkButtons" id="submitAddressChange" type="submit">{{"Submit Order"|trans}}</button>
+                    </form>   </div>
+
+
+            {% else %}
+                <h1>You are not authorized to see the contents of this page</h1>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}  

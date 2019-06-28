@@ -5,7 +5,7 @@
             $(document).ready(function() {
                 $('input[name=email]').keyup(function() {
                     var email = $('input[name=email]').val();
-                    $('#isTaken').load("/isemailregistered/" + email);
+                    $('#isTaken').load("/ajax/isemailregistered/" + email);
                 });
             });
         </script>

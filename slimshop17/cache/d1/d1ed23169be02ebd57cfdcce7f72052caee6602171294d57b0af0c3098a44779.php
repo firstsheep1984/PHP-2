@@ -65,7 +65,7 @@ class __TwigTemplate_cc80d80ad3081f22c12f71305f67a1394357a38817590b6822dd31e454c
         }
         // line 12
         echo "
-    <form method=\"post\">
+    <form method=\"post\" enctype=\"multipart/form-data\">
         Name: <input type=\"text\" name=\"name\" value=\"";
         // line 14
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "name", []), "html", null, true);
@@ -74,13 +74,17 @@ class __TwigTemplate_cc80d80ad3081f22c12f71305f67a1394357a38817590b6822dd31e454c
         // line 15
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "description", []), "html", null, true);
         echo "</textarea><br>
-        Price <input type=\"number\" step=\"0.01\" name=\"price\" value=\"";
+        Price: <input type=\"number\" step=\"0.01\" name=\"price\" value=\"";
         // line 16
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "price", []), "html", null, true);
         echo "\"><br>
-        <p>TODO: image upload</p>
-        <input type=\"submit\" value=\"";
+        Image: <input type=\"file\" name=\"productImage\">
+        <img src=\"/";
         // line 18
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "imagePath", []), "html", null, true);
+        echo "\" width=\"100\"><br>
+        <input type=\"submit\" value=\"";
+        // line 19
         if ($this->getAttribute((isset($context["v"]) ? $context["v"] : null), "id", [])) {
             echo "Save";
         } else {
@@ -104,7 +108,7 @@ class __TwigTemplate_cc80d80ad3081f22c12f71305f67a1394357a38817590b6822dd31e454c
 
     public function getDebugInfo()
     {
-        return array (  84 => 18,  79 => 16,  75 => 15,  71 => 14,  67 => 12,  63 => 10,  54 => 8,  50 => 7,  47 => 6,  45 => 5,  42 => 4,  39 => 3,  29 => 1,);
+        return array (  88 => 19,  84 => 18,  79 => 16,  75 => 15,  71 => 14,  67 => 12,  63 => 10,  54 => 8,  50 => 7,  47 => 6,  45 => 5,  42 => 4,  39 => 3,  29 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -129,11 +133,12 @@ class __TwigTemplate_cc80d80ad3081f22c12f71305f67a1394357a38817590b6822dd31e454c
         </ul>
     {% endif %}
 
-    <form method=\"post\">
+    <form method=\"post\" enctype=\"multipart/form-data\">
         Name: <input type=\"text\" name=\"name\" value=\"{{v.name}}\"><br>
         Description: <textarea name=\"description\">{{v.description}}</textarea><br>
-        Price <input type=\"number\" step=\"0.01\" name=\"price\" value=\"{{v.price}}\"><br>
-        <p>TODO: image upload</p>
+        Price: <input type=\"number\" step=\"0.01\" name=\"price\" value=\"{{v.price}}\"><br>
+        Image: <input type=\"file\" name=\"productImage\">
+        <img src=\"/{{v.imagePath}}\" width=\"100\"><br>
         <input type=\"submit\" value=\"{% if v.id %}Save{% else %}Add{% endif %} product\">
     </form>
 

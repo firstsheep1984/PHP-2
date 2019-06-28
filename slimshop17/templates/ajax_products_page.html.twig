@@ -1,0 +1,8 @@
+{% for item in itemsList %}
+    <div class="productBox">
+        <a href="/products/{{item.id}}"><h3>{{item.name}}</h3></a>
+        <p>Price {{item.price }} </p>
+        <div class="description">{{item.description}}</div>
+        <img src="/{{item.imagePath}}" width="200">        
+    </div>
+{% endfor %}

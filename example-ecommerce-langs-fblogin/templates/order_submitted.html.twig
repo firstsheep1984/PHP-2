@@ -1,0 +1,36 @@
+{% extends "master.html.twig" %}
+
+{% block title %} {{ "Order Submitted"|trans }} {% endblock %}
+{% block content %}
+
+    <div class="container" id="loginContainer">
+        <h4>{{"Thank You for your order. The delivery will be made from the nearest store"|trans}}: 
+            <b>{{store.address}} </b>
+            {{"in aproximate"|trans }} {{totalDeliveryTime}} minutes ({{"15 minutes for order preparation and"|trans}} {{deliveryTime}} minutes
+            {{"for delivery"|trans}} )
+        </h4>
+       
+        <div>
+            <p>{{"Delivery Address"|trans}}: <span>{{shippingAddress.address}} </span>
+                <span>{{shippingAddress.street}}, </span>
+                <span>{{shippingAddress.city}}, </span><span>{{shippingAddress.country}}, </span> <span>{{shippingAddress.postalCode}} </span></p>
+            <p> <span>{{"Contact Person"|trans}}: </span><span>{{shippingAddress.firstName}}, </span><span>{{shippingAddress.lastName}}</span><br>
+                <span></span> {{"Contact Phone"|trans}}: <span>{{shippingAddress.phone}}</span></p>
+            <br>
+            <p>{{"A confirmation email was sent to"|trans}} <span><b>{{shippingAddress.email}}</b></span></p>
+
+        </div>
+             <div>
+                 <hr style="background-color: #025274;">
+            <h4>{{"Order Summary"| trans}}</h4>
+            <p>{{"Total value before tax"|trans}}: {{ totalBeforeTax }}.</p>
+            <p>{{"Taxes"|trans}}: {{ taxes }}. </p>
+            <p>{{"Final total to be paid at delivery"|trans}}:
+                <b>{{ totalWithShippingAndTaxes }}</b>.</p>
+        </div>
+        <hr>
+                    <a href="/" class="btn btn-lg btn-primary btn-block linkButtons" id="correctAddress">{{"Continue"|trans}}</a>
+
+
+    </div>
+{% endblock %}  

@@ -45,10 +45,27 @@ class __TwigTemplate_b25f657bebba3ce9a1e09940df558670128dce631c67ab7394b7edabd4b
         // line 8
         echo "    </head>
     <body>
-        <div id=\"centerContent\">";
-        // line 10
+        <div id=\"centerContent\">
+            <div>
+                ";
+        // line 12
+        if ($this->getAttribute((isset($context["sessionUser"]) ? $context["sessionUser"] : null), "id", [])) {
+            // line 13
+            echo "                    You are logged in as ";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["sessionUser"]) ? $context["sessionUser"] : null), "name", []), "html", null, true);
+            echo "
+                ";
+        } else {
+            // line 15
+            echo "                    You can login or register
+                ";
+        }
+        // line 17
+        echo "            </div>
+        ";
+        // line 18
         $this->displayBlock('content', $context, $blocks);
-        // line 11
+        // line 19
         echo "            <div id=\"footer\"><br>
                 &copy; Copyright 2019 by me.
         </div>
@@ -67,7 +84,7 @@ class __TwigTemplate_b25f657bebba3ce9a1e09940df558670128dce631c67ab7394b7edabd4b
     {
     }
 
-    // line 10
+    // line 18
     public function block_content($context, array $blocks = [])
     {
     }
@@ -77,9 +94,14 @@ class __TwigTemplate_b25f657bebba3ce9a1e09940df558670128dce631c67ab7394b7edabd4b
         return "master.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  71 => 10,  66 => 7,  61 => 5,  52 => 11,  50 => 10,  46 => 8,  44 => 7,  39 => 5,  33 => 1,);
+        return array (  88 => 18,  83 => 7,  78 => 5,  69 => 19,  67 => 18,  64 => 17,  60 => 15,  54 => 13,  52 => 12,  46 => 8,  44 => 7,  39 => 5,  33 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -101,7 +123,15 @@ class __TwigTemplate_b25f657bebba3ce9a1e09940df558670128dce631c67ab7394b7edabd4b
         {% block headAdd %}{% endblock %}
     </head>
     <body>
-        <div id=\"centerContent\">{% block content %}{% endblock %}
+        <div id=\"centerContent\">
+            <div>
+                {% if sessionUser.id %}
+                    You are logged in as {{ sessionUser.name }}
+                {% else %}
+                    You can login or register
+                {% endif %}
+            </div>
+        {% block content %}{% endblock %}
             <div id=\"footer\"><br>
                 &copy; Copyright 2019 by me.
         </div>

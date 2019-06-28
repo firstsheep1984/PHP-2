@@ -1,0 +1,119 @@
+<?php
+
+$app->get('/admin/products/:op(/:id)', function($op, $id = -1) use ($app) {
+    if (!$_SESSION['user'] || $_SESSION['user']['role'] != 'admin') {
+        $app->render('access_denied.html.twig');
+        return;
+    }
+    if (($op == 'add' && $id != -1) || ($op == 'edit' && $id == -1)) {
+        echo "INVALID REQUEST"; // FIXME on Monday - display standard 404 from slim
+        return;
+    }
+    //
+    if ($id != -1) {
+        $values = DB::queryFirstRow('SELECT * FROM products WHERE id=%i', $id);
+        if (!$values) {
+            echo "NOT FOUND";  // FIXME on Monday - display standard 404 from slim
+            return;
+        }
+    } else { // nothing to load from database - adding
+        $values = array();
+    }
+    $app->render('admin/products_addedit.html.twig', array(
+        'v' => $values,
+        'isEditing' => ($id != -1)
+    ));
+})->conditions(array(
+    'op' => '(edit|add)',
+    'id' => '\d+'
+));
+
+$app->post('/admin/products/:op(/:id)', function($op, $id = -1) use ($app, $log) {
+    if (!$_SESSION['user'] || $_SESSION['user']['role'] != 'admin') {
+        $app->render('access_denied.html.twig');
+        return;
+    }
+    if (($op == 'add' && $id != -1) || ($op == 'edit' && $id == -1)) {
+        echo "INVALID REQUEST"; // FIXME on Monday - display standard 404 from slim
+        return;
+    }
+    //
+    $name = $app->request()->post('name');
+    $description = $app->request()->post('description');
+    $price = $app->request()->post('price');
+    //
+    $values = array('name' => $name, 'description' => $description, 'price' => $price);
+    $errorList = array();
+    //
+    if (strlen($name) < 2 || strlen($name) > 50) {
+        $values['name'] = '';
+        array_push($errorList, "Name must be between 2 and 50 characters long");
+    }
+    if (strlen($description) < 2 || strlen($description) > 1000) {
+        $values['description'] = '';
+        array_push($errorList, "Description must be between 2 and 1000 characters long");
+    }
+    if (empty($price) || $price < 0 || $price > 99999999.99) {
+        $values['price'] = '';
+        array_push($errorList, "Price must be between 0 and 99999999.99");
+    }
+    $productImage = array();
+    // is file being uploaded
+    if ($_FILES['productImage']['error'] != UPLOAD_ERR_NO_FILE) {
+        $productImage = $_FILES['productImage'];
+        if ($productImage['error'] != 0) {
+            array_push($errorList, "Error uploading file");
+            $log->err("Error uploading file: " . print_r($productImage, true));
+        } else {
+            if (strstr($productImage['name'], '..')) {
+                array_push($errorList, "Invalid file name");
+                $log->warn("Uploaded file name with .. in it (possible attack): " . print_r($productImage, true));
+            }
+            // TODO: check if file already exists, check maximum size of the file, dimensions of the image etc.
+            $info = getimagesize($productImage["tmp_name"]);
+            if ($info == FALSE) {
+                array_push($errorList, "File doesn't look like a valid image");
+            } else {
+                if ($info['mime'] == 'image/jpeg' || $info['mime'] == 'image/gif' || $info['mime'] == 'image/png') {
+                    // image type is valid - all good
+                } else {
+                    array_push($errorList, "Image must be a JPG, GIF, or PNG only.");
+                }
+            }
+        }
+    } else { // no file uploaded
+        if ($op == 'add') {
+            array_push($errorList, "Image is required when creating new product");
+        }
+    }
+
+    //
+    if ($errorList) { // 3. failed submission
+        $app->render('admin/products_addedit.html.twig', array(
+            'errorList' => $errorList,
+            'isEditing' => ($id != -1),
+            'v' => $values));
+    } else { // 2. successful submission
+        if ($productImage) {
+            $sanitizedFileName = preg_replace('[^a-zA-Z0-9_\.-]', '_', $productImage['name']);
+            $imagePath = 'uploads/' . $sanitizedFileName;
+            if (!move_uploaded_file($productImage['tmp_name'], $imagePath)) {
+                $log->err("Error moving uploaded file: " . print_r($productImage, true));
+                $app->render('internal_error.html.twig');
+                return;
+            }
+            // TODO: if EDITING and new file is uploaded we should delete the old one in uploads
+            $values['imagePath'] = "/" . $imagePath;
+        }
+        if ($id != -1) {
+            DB::update('products', $values, "id=%i", $id);
+        } else {
+            DB::insert('products', $values);
+        }
+        $app->render('admin/products_addedit_success.html.twig', array('isEditing' => ($id != -1)));
+    }
+})->conditions(array(
+    'op' => '(edit|add)',
+    'id' => '\d+'
+));
+

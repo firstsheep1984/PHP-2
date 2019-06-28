@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <style>
+            table td, table th {
+                width:150px;
+                height: 50px;
+            }
+            table tr {
+                border: 1px solid black;
+            }
+            table th {
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>{{"Thank You for your order"|trans}}</h2>
+        <h2>Order Details</h2>
+        <div>
+            <table>
+                <tr><th>#</th><th>{{"Item name"|trans}}</th>
+                    <th>{{"Unit price"|trans}}</th><th>{{"Quantity"|trans}}</th>
+                    <th>{{"Total"|trans}}</th></tr>
+                        {% for item in cartItems %}
+                    <tr><td>{{loop.index}}</td>
+                        <td><span>{{item.name}}</span></td>
+                        <td>{{item.price}}</td>
+                        <td><span>{{item.quantity}}"</span></td>
+                        <td><span>{{item.total}}</span></td>
+                {% endfor %}
+            </table>
+        </div>
+             <hr style="background-color: #025274;">
+              <div>
+            <hr style="background-color: #025274;">
+            <h2>{{"Order Summary"| trans}}</h2>
+            <p>{{"Total value before tax"|trans}}: {{ totalBeforeTax }}.</p>
+            <p>{{"Taxes"|trans}}: {{ taxes }}. </p>
+            <p>{{"Final total to be paid at delivery"|trans}}:
+                <b>{{ totalWithShippingAndTaxes }}</b>.</p>
+        </div>
+        <div>
+            <p>{{"Delivery Address"|trans}}: <span>{{shippingAddress.address}} </span>
+                <span>{{shippingAddress.street}}, </span>
+                <span>{{shippingAddress.city}}, </span><span>{{shippingAddress.country}}, </span> <span>{{shippingAddress.postalCode}} </span></p>
+            <p> <span>{{"Contact Person"|trans}}: </span><span>{{shippingAddress.firstName}}, </span><span>{{shippingAddress.lastName}}</span><br>
+                <span></span> {{"Contact Phone"|trans}}: <span>{{shippingAddress.phone}}</span></p>
+            <br>
+        </div>
+       
+    </body>
+</html>

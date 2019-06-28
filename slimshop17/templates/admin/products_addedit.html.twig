@@ -10,11 +10,12 @@
         </ul>
     {% endif %}
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         Name: <input type="text" name="name" value="{{v.name}}"><br>
         Description: <textarea name="description">{{v.description}}</textarea><br>
-        Price <input type="number" step="0.01" name="price" value="{{v.price}}"><br>
-        <p>TODO: image upload</p>
+        Price: <input type="number" step="0.01" name="price" value="{{v.price}}"><br>
+        Image: <input type="file" name="productImage">
+        <img src="/{{v.imagePath}}" width="100"><br>
         <input type="submit" value="{% if v.id %}Save{% else %}Add{% endif %} product">
     </form>
 

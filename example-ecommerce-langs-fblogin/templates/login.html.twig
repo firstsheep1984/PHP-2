@@ -1,0 +1,43 @@
+{% extends "master.html.twig" %}
+
+{% block title %}{{"Sign In"|trans}}{% endblock %}
+
+{% block content %}
+    <div class="container" id="loginContainer">
+        {% if fbUser or user %}
+             <h1>{{"You are already logged in"|trans}}</h1>
+             <a class="btn btn-lg btn-primary btn-block linkButtons" href="/">{{"Logout"|trans}}</a> {{"OR"|trans}}
+              <a class="btn btn-lg btn-primary btn-block linkButtons" href="/">{{"Continue"|trans}}</a>
+            {% else %}
+        {% if loginForm %}
+                <h1>{{"You are now logged In"|trans}}</h1>
+                <a class="btn btn-lg btn-primary btn-block linkButtons"  href="/">{{"Continue"|trans}}</a>
+            {% else %}
+        <div class="row">
+            
+                {% if loginFailed %}
+                    <h4 style="color:red; font-size: 12px;">{{"Login Failed"|trans}}</h4>
+                {% endif %}
+                <form class="form-signin" method="POST" action="/login">
+                    <h2 class="form-signin-heading">{{"Sign In"|trans}}</h2>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">@</span>
+                        <input type="email" name="email" class="form-control" aria-describedby="basic-addon1" required>
+                    </div>
+                    <br/>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon3">{{"Password"|trans}}</span>
+                        <input type="password" name="password" class="form-control" aria-describedby="basic-addon3" required >
+                    </div> 
+                    <br/>
+                    <button class="btn btn-lg btn-primary btn-block"  type="submit">{{"Sign In2"|trans}}</button>
+                </form>
+
+            <a  href="/forgotPassword">{{"Forgot Password"|trans}} ?</a>
+            <a href="{{loginUrl}}"><img src="/images/facebook.png" alt="Login with Facebook" id="fbLoginImage"></a>
+            </div>
+           {% endif %}
+        </div>
+         {% endif %}
+        {% endblock %}
+

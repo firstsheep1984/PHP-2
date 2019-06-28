@@ -39,7 +39,7 @@ class __TwigTemplate_60c2d8a99efef82cb402210f52cca3563d2a26559c08733e32ec350de2a
     // line 3
     public function block_title($context, array $blocks = [])
     {
-        echo "Access denied";
+        echo "Products list";
     }
 
     // line 5
@@ -72,7 +72,10 @@ class __TwigTemplate_60c2d8a99efef82cb402210f52cca3563d2a26559c08733e32ec350de2a
             // line 14
             echo twig_escape_filter($this->env, $this->getAttribute($context["p"], "price", []), "html", null, true);
             echo "</td>
-            <td>todo</td>
+            <td><img src=\"/";
+            // line 15
+            echo twig_escape_filter($this->env, $this->getAttribute($context["p"], "imagePath", []), "html", null, true);
+            echo "\" width=\"100\"></td>
             <td>
                 <!-- method 1 - simple h-ref text link -->
                 <!-- <a href=\"/admin/products/edit/";
@@ -115,7 +118,7 @@ class __TwigTemplate_60c2d8a99efef82cb402210f52cca3563d2a26559c08733e32ec350de2a
 
     public function getDebugInfo()
     {
-        return array (  102 => 28,  90 => 22,  85 => 20,  80 => 18,  73 => 14,  69 => 13,  65 => 12,  61 => 11,  58 => 10,  54 => 9,  49 => 6,  46 => 5,  40 => 3,  30 => 1,);
+        return array (  105 => 28,  93 => 22,  88 => 20,  83 => 18,  77 => 15,  73 => 14,  69 => 13,  65 => 12,  61 => 11,  58 => 10,  54 => 9,  49 => 6,  46 => 5,  40 => 3,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -130,7 +133,7 @@ class __TwigTemplate_60c2d8a99efef82cb402210f52cca3563d2a26559c08733e32ec350de2a
     {
         return new Source("{% extends \"master.html.twig\" %}
 
-{% block title %}Access denied{% endblock %}
+{% block title %}Products list{% endblock %}
 
 {% block content %}
     <p><a href=\"/admin/products/add\">add product</a></p>
@@ -142,7 +145,7 @@ class __TwigTemplate_60c2d8a99efef82cb402210f52cca3563d2a26559c08733e32ec350de2a
             <td>{{p.name}}</td>
             <td>{{p.description}}</td>
             <td>{{p.price}}</td>
-            <td>todo</td>
+            <td><img src=\"/{{p.imagePath}}\" width=\"100\"></td>
             <td>
                 <!-- method 1 - simple h-ref text link -->
                 <!-- <a href=\"/admin/products/edit/{{p.id}}\">Edit</a> -->

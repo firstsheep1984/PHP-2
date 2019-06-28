@@ -7,7 +7,15 @@
         {% block headAdd %}{% endblock %}
     </head>
     <body>
-        <div id="centerContent">{% block content %}{% endblock %}
+        <div id="centerContent">
+            <div>
+                {% if sessionUser.id %}
+                    You are logged in as {{ sessionUser.name }}
+                {% else %}
+                    You can login or register
+                {% endif %}
+            </div>
+        {% block content %}{% endblock %}
             <div id="footer"><br>
                 &copy; Copyright 2019 by me.
         </div>

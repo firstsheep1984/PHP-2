@@ -1,0 +1,35 @@
+{% extends "master.html.twig" %}
+
+
+{% block title %} View orders{% endblock %}
+{% block head %}{% endblock %}
+
+{% block content %}
+    {% if user.role == 'admin' %}
+    <div id="content_viewOrders">
+        <table id="tbOrders" style="border: 1px solid black;margin:40px 0 0 30px;">
+            <tr style="height:30px;background-color:#025274;color:white;">
+                <th> Nr </th>
+                <th> Order date </th>
+                <th> Order amount </th>
+                <th> Delivery Date </th>
+                <th> Amount Paid</th>
+                <th></th>
+            </tr>
+            {% for order in orderList %} 
+                <tr id="itemrow{{order.orderID}}">
+                    <td>{{order.orderID}}</td>
+                    <td>{{order.orderDate}}</td>
+                    <td>{{order.orderAmount}}</td>
+                    <td><input type="date" name="deliveryDate" value="{{order.deliveryDate}}" style="color:blue;text-align: right;"></td>
+                    <td><input type="text" name="deliveryAmount" value="{{order.deliveryAmount}}" style="text-align: right;color:red;"></td>
+                    <td style="width:100px;"><button onclick="saveDelivery({{order.orderID}})" style="width:100px;" class="btSave" >Save</button></td>
+                </tr>                         
+            {% endfor %} 
+        </table>
+    </div> 
+
+<script src="/js/orders_view.js"></script>
+{% endif %}
+{% endblock %}
+

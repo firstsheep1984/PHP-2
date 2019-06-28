@@ -13,11 +13,19 @@ $log = new Logger('main');
 $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
-DB::$user = 'slimshop17';
-DB::$password = 'gptrcBR4JrqAYwfS';
-DB::$dbName = 'slimshop17';
-DB::$encoding = 'utf8';
-DB::$port = 3333;
+if ($_SERVER['SERVER_NAME'] == 'localhost') { // localhost
+    DB::$user = 'slimshop17';
+    DB::$password = 'gptrcBR4JrqAYwfS';
+    DB::$dbName = 'slimshop17';
+    DB::$encoding = 'utf8';
+    DB::$port = 3333;
+} else { // ipd17.com
+    DB::$user = 'cp4928_teacher';
+    DB::$password = 'gptrcBR4JrqAYwfS';
+    DB::$dbName = 'cp4928_teacher';
+    DB::$encoding = 'utf8';
+}
+
 DB::$error_handler = 'database_error_handler';
 DB::$nonsql_error_handler = 'database_error_handler';
 
@@ -45,7 +53,8 @@ $view->parserOptions = array(
 $view->setTemplatesDirectory(dirname(__FILE__) . '/templates');
 
 \Slim\Route::setDefaultConditions(array(
-    'id' => '[1-9][0-9]*'
+    'id' => '[1-9][0-9]*',
+    'integer'=> '(0|-?[1-9][0-9]*)'
 ));
 
 function getUserIpAddr() {
@@ -64,8 +73,42 @@ function getUserIpAddr() {
 require_once 'admin.php';
 
 $app->get('/', function() use ($app) {
-    $list = DB::query("SELECT * FROM articles");
-    $app->render('index.html.twig');
+    $prodPerPage = 4;
+    $prodCount = DB::queryFirstField("SELECT COUNT(*) FROM products");
+    $totalPages = max(1,($prodCount + $prodPerPage - 1 ) / $prodPerPage);
+    $app->render('index.html.twig', array(
+        'sessionUser' => @$_SESSION['user'],
+        'totalPages' => $totalPages
+            ));
+});
+
+$app->get('/ajax/products/page/:page(/sortby/:order)', function($page, $order = 'id') use ($app, $log) {
+    $prodPerPage = 4;
+    $prodCount = DB::queryFirstField("SELECT COUNT(*) FROM products");
+    if ($page * $prodPerPage > ($prodCount + $prodPerPage - 1)) { // TODO: make sure it's right
+        $app->notFound();
+        return;
+    }
+    $skip = ($page - 1 ) * $prodPerPage;
+    $itemsList = DB::query("SELECT * FROM products ORDER BY %l LIMIT %l,%l", $order, $skip, $prodPerPage);
+    $app->render('ajax_products_page.html.twig', array(
+        'itemsList' => $itemsList));
+    //print_r($itemsList);
+    // $log->d('items: ' . print_r($itemsList, true));    
+})->conditions(array('page' => '[1-9][0-9]*', 'order' => '(id|name|price)'));
+
+$app->get('/categories/:id/image', function($id) use ($app, $log) {
+    $image = DB::queryFirstRow("SELECT * FROM categories WHERE id=%i", $id);
+    // POSSIBLE: Verify if current user session is permitted to view this content
+    if (!$image) {
+        $app->notFound();
+        return;
+    }
+    if ($app->request()->get('download')) {
+        $app->response()->header('Content-Disposition', 'attachment; filename=' . $image['imageFileName'] . ";");
+    }
+    $app->response()->header('Content-Type', $image['imageMimeType']);
+    echo $image['imageData'];
 });
 
 $app->get('/internalerror', function() use ($app, $log) {
@@ -76,7 +119,7 @@ $app->get('/forbidden', function() use ($app) {
     $app->render('forbidden.html.twig');
 });
 
-$app->get('/isemailregistered/(:email)', function($email = "") use ($app) {
+$app->get('/ajax/isemailregistered/(:email)', function($email = "") use ($app) {
     $user = DB::queryFirstRow("SELECT * FROM users WHERE email=%s", $email);
     if ($user) {
         echo "Email already registered";
@@ -85,7 +128,7 @@ $app->get('/isemailregistered/(:email)', function($email = "") use ($app) {
 
 // STATE 1: first show
 $app->get('/register', function() use ($app) {
-    $app->render('register.html.twig');
+    $app->render('register.html.twig', array('sessionUser' => @$_SESSION['user']));
 });
 
 $app->post('/register', function() use ($app, $log) {

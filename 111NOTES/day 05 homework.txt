@@ -26,6 +26,7 @@ About MeekroDB from meekro.com read the following:
 About Twig templates from https://twig.symfony.com/ read the following:
 - main index page (summary of twig)
 - https://twig.symfony.com/doc/2.x/templates.html (whole long page)
+- https://twig.symfony.com/doc/2.x/tags/extends.html (only until Named Block End-Tags)
 
 About PHP Slim v2
 * http://docs.slimframework.com/routing/get/

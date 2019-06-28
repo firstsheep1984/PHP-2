@@ -1,0 +1,16 @@
+{% extends "master.html.twig" %}
+
+{% block title %}{{"Internal Error"|trans}}{% endblock %}
+
+{% block content %}
+    <div class="container" id="loginContainer">
+        <div class="row">
+    <h1>{{"Internal Error"|trans}}</h1>
+    <img src="/images/error.png" width="150" style="margin: 20px;">
+    <p>{{"We're very sorry, we failed to fulfill your request. Our team has already been notified of your trouble."|trans}}</p>
+    <p><a class="btn btn-lg btn-primary btn-block linkButtons"  href="/">{{"Continue"|trans}}</a>
+</p>
+    </div>
+    </div>
+    
+{% endblock %}

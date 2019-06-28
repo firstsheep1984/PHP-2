@@ -1,0 +1,27 @@
+{% extends "master.html.twig" %}
+
+{% block title %}E-commerce index{% endblock %}
+
+{% block headAdd %}
+    <script>
+        function loadPage(pageNum) {
+            $("#productsView").load('/ajax/products/page/' + pageNum);
+        }        
+        $(document).ready(function() {
+            loadPage(1);
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <p>We're selling today</p>
+    <div id="productsView">
+        
+    </div>
+    <div id="pageNavigation">
+        {% for num in range(1, totalPages) %}
+            <button onClick="loadPage({{num}})">{{num}}</button>
+        {% endfor %}     
+    </div>
+    
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "master.html.twig" %}
+
+
+{% block title %} Page add/edit product{% endblock %}
+{% block head %}<script src="/js/category_script.js"></script>{% endblock %}
+
+{% block content %}
+    {% if user.role == 'admin' %}
+    <div id="container_category_form">
+        {% if categoryFailed %}
+            <h4 style="color:red; font-size: 12px;">{{"Insert category Failed"|trans}}</h4>
+        {% endif %}
+        <div id = "category_form">
+            <div class="category_style" id="oldCategory">
+                <label>Category </label>
+                <select id="categoryName" class="input_category_addedit" style="height: 35px;">
+                    <option selected="true" disabled="disabled">--select category--</option>
+                    {% for cat in categoryList %}
+                        <option id ={{cat.ID}}>{{cat.categoryname}}</option>
+                    {% endfor %}
+                </select><br><br>
+            </div>
+            <div class="category_style" id="newCategory">
+                <label>Category en </label>
+                <input type="text" name="name_en" class="input_category_addedit"><br><br>
+                <label>Category fr </label>
+                <input type="text" name="name_fr" class="input_category_addedit"><br><br>
+                <button id="buttonAddedit" class="buttonCategory">Add / Edit category</button> 
+                <button id="buttonCancel" class="buttonCategory">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    
+    {% endif %}
+{% endblock %}
