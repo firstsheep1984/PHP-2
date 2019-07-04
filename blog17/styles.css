@@ -16,15 +16,3 @@ body {
     background-color: yellow;
     color: red;
 }
-
-.article {
-    margin-bottom: 30px;
-}
-
-.article h1 {
-    font-size: 20px;
-}
-
-.article h2 {
-    font-size: 16px;
-}

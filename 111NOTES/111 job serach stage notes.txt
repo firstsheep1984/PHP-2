@@ -1,0 +1,118 @@
+IPD STAGE AND JOB SEARCH NOTES
+==============================
+
+1. Networking
+- LinkedIn profile
+- simple biz cards (name, email, phone)
+https://www.vistaprint.ca - get $5 or $10 pack
+
+- 3 networking events you must attend: 
+a) http://www.startupdrinksmontreal.com/ - Montreal Startup Drinks
+b) http://www.montrealnewtech.com/ - MontrealNewTech
+
+Specific area:
+a) https://www.meetup.com/msdevmtl  - DotNet
+b) https://www.meetup.com/PHPQuebec/ - PHP
+c) https://www.meetup.com/montreal-jug/ - Java
+d) http://android-montreal.com/ Android
+
+2. Narrowing down your job search
+- Java - Financial applications, mobile-Android, JSP-web
+- C# (Desktop, Xamarin-mobile, ASP-web)
+- Web (HTML/CSS/JS/PHP) - full stack developer
+
+3. Job Prospects
+* Company reviews - https://www.glassdoor.com/Reviews/index.htm
+* Go to https://www.payscale.com for your job, start asking for median amount
+* When they make a verbal offer, do NOT answer yes/no, ask what else is included in the package, ask for shorter probation time, more vacation, health insurance, RRSP matching, etc.
+* Meet with future coworkers, ask questions like:
+- in the last 2 weeks, how many times did you get home by 6pm?
+- in the last 3 months, how many weekends did you have to work from home?
+- make sure you're working around people you can learn from, not alone.
+
+
+If you're thinking of Android mobile apps you must start on your own:
+https://developer.android.com/training/basics/firstapp/index.html
+
+iOS:
+https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/
+
+
+4. Portfolio
+* Mobile apps: have 1-3 apps in app store
+* Web: alex.ipd12.info - portfolio
+* Link GitHub/BitBucket repository links for projects
+* Java/Swing/C#/DotNet/WPF
+
+
+5. CV/Resume and Cover Letter
+
+* Rule of thumb: for every 10 years of experience in industry you get 1 page of CV
+"If I had more time, I would have written a shorter letter."
+
+CV sections:
+
+On top: link to LinkedIn, portfolio, contact info, name (in bold/bigger on top)
+Do NOT put your photo, it is illegal.
+But you can put photo in the online portfolio if you think it will be an advantage.
+
+* Summary 1-3 sentences:
+"Looking for web-related developer position, ideally in backed, with SQL/AJAX/... technologies, in a strong team where I can continually improve my programming and technical leadership skills."
+
+* Relevant skills and tools
+- HTML, HTML5, CSS, Bootstrap
+- jQuery, JavaScript
+- SQL Databases: MS SQL server, MySQL server, SQLite
+- AJAX, PHP
+- Git, SourceTree,
+- Agile Methodology, Scrums, Kanban
+- Netbeans, Dreamweaver
+
+* Other skills and tools
+- Java, Swing, JSP
+- DotNet C#, WPF, Entity Framework
+- ...
+
+* Education
+- John Abbott College, Certificate.... Internet Programming and Development - 2017-2018
+
+* Relevant Work Experience
+
+* Work Experience
+- Developed a website for small business () using custom PHP backed and MySQL database with admin module...
+- Data Entry at ... using MS Access database
+- Worked at Warehouse at ...
+
+
+* Hobbies (optional, if they support your CV)
+
+* Langauges: English (excellent), French (working), Persian (mother tongue)
+
+Available for stage or employment starting May 1, 2018.
+
+Do not put the note about references, everybody knows you have them.
+
+
+6. Preparation for Job Interview
+Google:
+- "common job interview questions"
+- "best questions to ask at job interview"
+- "common java interview questions" - substitute java for php, html, css, c#, etc.
+
+=======
+
+
+ACTION PLAN:
+1. Get Biz Cards
+2. Setup LinkedIn profile TODAY, with a photo
+3. Get a buddy and go to networking events - MOST IMPORTANT
+4. Get a great stage, job and profit!
+
+
+
+For every 10,000 of yearly salary allow up to 1 month of job search.
+So, if you want to earn 60,000 allow up to 6 months of job search.
+One of the reasons for it is that job market goes through phases / seasons.
+
+Free workshops and other job-search services: https://www.yesmontreal.ca/
+

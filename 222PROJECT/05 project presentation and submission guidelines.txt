@@ -9,11 +9,11 @@ How much have you learned from doing the project.
 
 After the presentation you will need to submit these files:
 * Presentation PowerPoint or PDF file with slides.
-- in comment you MUST include 2 URLs: to Git and to Trello you used.
+- in comment you MUST include 3 URLs: to Git and to Trello you used, and URL to the project hosted online.
 * Source code of your solution.
 * Source code must ALSO be in GitHub public repository.
 * Export of the database structure and data.
-Except if you have large BLOBs then take screenshots of database structure and data instead.
+Except if you have large BLOBs then either take screenshots of database structure and data or upload multiple / split ZIP files.
 
 
 ADDITIONAL NOTES FOR PHP COURSE ONLY:
@@ -47,6 +47,8 @@ must talk about more-less 50% of the slides.
 
 Each member of the team is evaluated *individually* for their
 contribution to the project and quality of their presentation.
+
+NOTE: Your computers will be shut down during the presentations. You will not be able to work on your slides while other people are presenting.
 
 
 Practice and Adjustments
@@ -143,7 +145,7 @@ back (that's where the teacher is sitting during presentation)
 you will lose marks.
 
 * Too much code
-It is okay to take a screenshot of a 5-15 lines of code
+It is okay to take a screenshot of a 5-20 lines of code
 when talking about your solution. But if there's too many lines
 then code becomes unreadable and you will lose marks.
 
@@ -154,7 +156,8 @@ was it even there because it does not seem relevant
 - you will lose marks.
 
 * More than 2 font types, more than 3 font sizes,
-use of animations, unreadable colors.
+use of animations, unreadable colors, videos.
+E.g. https://www.jimphicdesigns.com/downloads/imgs-mockup/download-arrow.gif
 Any of the above will have you lose marks.
 
 * Reading from a slide when presenting.
